@@ -1,0 +1,21 @@
+{
+  "id": "CR-06A",
+  "module": "Module 6",
+  "moduleName": "Events and Forms with TypeScript",
+  "title": "Controlled Product Review Form & Field-Level Validation",
+  "ctoTopic": "Form validation",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "6.1 Event Handling, 6.2 Form Events, 6.4 Controlled Components, 6.6 Form Validation",
+  "targetFiles": [
+    "src/features/reviews/ReviewForm.tsx",
+    "src/features/reviews/ReviewList.tsx",
+    "src/pages/ProductDetailPage.tsx"
+  ],
+  "criteria": [
+    "Controlled form handling rating, headline, and commentary with React.FormEvent",
+    "Inline field-level validation errors (Rating > 0, Headline 5-60 chars, Body min 20 chars)",
+    "Optimistic review addition and session persistence"
+  ]
+}

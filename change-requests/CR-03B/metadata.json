@@ -1,0 +1,21 @@
+{
+  "id": "CR-03B",
+  "module": "Module 3",
+  "moduleName": "React Components with TypeScript",
+  "title": "Reusable Star Rating & Review Badge Component Library",
+  "ctoTopic": "Reusable UI Components",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "3.1 Functional Components, 3.2 Optional Props, 3.3 Children & Composition, 3.5 Generic UI",
+  "targetFiles": [
+    "src/components/ui/StarRating.tsx",
+    "src/components/ui/StarRating.css",
+    "src/components/ui/ReviewBadge.tsx"
+  ],
+  "criteria": [
+    "Build <StarRating /> with rating, maxStars, and interactive hover callbacks",
+    "Build <ReviewBadge /> displaying formatted score and count",
+    "Support responsive sizes (sm, md, lg) with full ARIA accessibility"
+  ]
+}

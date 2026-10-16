@@ -1,0 +1,20 @@
+{
+  "id": "CR-07C",
+  "module": "Module 7",
+  "moduleName": "React Hooks with TypeScript",
+  "title": "Custom Hook: useDebounce for Search Input Optimization",
+  "ctoTopic": "Performance",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "7.2 useEffect, 7.8 Custom Hooks, 7.9 Optimization Patterns",
+  "targetFiles": [
+    "src/hooks/useDebounce.ts",
+    "src/pages/ProductListPage.tsx"
+  ],
+  "criteria": [
+    "Generic useDebounce<T>(value, delayMs) hook with timer cancellation",
+    "Integrate with catalog search input with 300ms delay",
+    "Unit test verifying delayed emission of updated search term"
+  ]
+}

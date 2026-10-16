@@ -1,0 +1,19 @@
+{
+  "id": "CR-07A",
+  "module": "Module 7",
+  "moduleName": "React Hooks with TypeScript",
+  "title": "Custom Hook: useCountdownTimer with Interval Cleanup",
+  "ctoTopic": "Custom Hooks",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Medium",
+  "curriculum": "7.1 Hook Rules, 7.2 useEffect, 7.8 Custom Hooks, 7.9 Design Patterns",
+  "targetFiles": [
+    "src/hooks/useCountdownTimer.ts"
+  ],
+  "criteria": [
+    "useCountdownTimer(initialSeconds, onExpire) hook with start, pause, and reset methods",
+    "Proper interval cleanup on unmount preventing memory leaks",
+    "Strict TypeScript return tuple/interface with zero any"
+  ]
+}

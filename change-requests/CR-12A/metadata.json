@@ -1,0 +1,21 @@
+{
+  "id": "CR-12A",
+  "module": "Module 12",
+  "moduleName": "Advanced React Component Patterns",
+  "title": "Accessible createPortal Quick View Modal with Backdrop Blur",
+  "ctoTopic": "Responsiveness related CR along with adding a new component",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "12.1 Component Design, 12.7 createPortal, 12.3 Compound Patterns",
+  "targetFiles": [
+    "src/components/catalog/QuickViewModal.tsx",
+    "src/components/catalog/QuickViewModal.css",
+    "src/pages/ProductListPage.tsx"
+  ],
+  "criteria": [
+    "Render modal outside DOM root directly into document.body using ReactDOM.createPortal",
+    "Keyboard Escape key listener and body scroll lock while open",
+    "Seamless Add to Bag and Wishlist triggers directly from modal"
+  ]
+}

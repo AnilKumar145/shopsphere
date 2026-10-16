@@ -1,0 +1,21 @@
+{
+  "id": "CR-15B",
+  "module": "Module 15",
+  "moduleName": "Enterprise React Application Architecture",
+  "title": "Centralized Runtime Configuration & Vite Environment Boundaries",
+  "ctoTopic": "env variables and configuration based implementation",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "15.6 Configuration Management, Environment Variables, 15.10 Strict TypeScript",
+  "targetFiles": [
+    "src/config/appConfig.ts",
+    ".env.example",
+    "src/vite-env.d.ts"
+  ],
+  "criteria": [
+    "Type-safe AppConfig interface reading import.meta.env with fallback defaults",
+    ".env.example documenting all required environment variables",
+    "Strongly typed Vite client declarations in vite-env.d.ts"
+  ]
+}

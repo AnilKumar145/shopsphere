@@ -1,0 +1,20 @@
+{
+  "id": "CR-05A",
+  "module": "Module 5",
+  "moduleName": "State Management with TypeScript",
+  "title": "Customer Order Lifecycle State Machine & Cancellation Flow",
+  "ctoTopic": "State Management",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "5.1 State Fundamentals, 5.2 useState, 5.4 Array State, 5.5 Union State, 5.7 Derived State",
+  "targetFiles": [
+    "src/pages/OrdersPage.tsx",
+    "src/services/orderService.ts"
+  ],
+  "criteria": [
+    "Implement status transitions: Confirmed -> Cancelled",
+    "Immutable state updates ensuring past order history is not mutated directly",
+    "Confirmation dialog and toast notification feedback on cancel"
+  ]
+}

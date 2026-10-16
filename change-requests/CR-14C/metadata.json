@@ -1,0 +1,20 @@
+{
+  "id": "CR-14C",
+  "module": "Module 14",
+  "moduleName": "Testing React Applications with TypeScript",
+  "title": "Service Mocking & Route Guard Integration Tests",
+  "ctoTopic": "lots of unit tests to be written",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "14.6 API Testing & Mocking, 14.7 Routing Tests, 14.8 Test Quality",
+  "targetFiles": [
+    "src/test/axiosClient.test.ts",
+    "src/test/ProtectedRoute.test.tsx"
+  ],
+  "criteria": [
+    "Test Axios fallback to mock catalog when network error occurs",
+    "Test ProtectedRoute redirecting unauthenticated users to /login with state",
+    "All tests run offline with deterministic mocked responses"
+  ]
+}

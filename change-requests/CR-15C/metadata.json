@@ -1,0 +1,20 @@
+{
+  "id": "CR-15C",
+  "module": "Module 15",
+  "moduleName": "Enterprise React Application Architecture",
+  "title": "WCAG 2.1 AA Accessible Live Announcer Region (aria-live=\"polite\")",
+  "ctoTopic": "Accessibility",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "15.8 Accessibility, ARIA Live Regions, Focus Management",
+  "targetFiles": [
+    "src/components/common/LiveAnnouncer.tsx",
+    "src/App.tsx"
+  ],
+  "criteria": [
+    "<LiveAnnouncer /> component with aria-live=\"polite\" and aria-atomic=\"true\"",
+    "Announce dynamic events: \"Added to Bag\", \"Order Cancelled\", \"Theme Switched\"",
+    "Zero visual intrusion with screen-reader only class (.sr-only)"
+  ]
+}

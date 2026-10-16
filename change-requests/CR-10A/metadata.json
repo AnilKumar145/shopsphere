@@ -1,0 +1,21 @@
+{
+  "id": "CR-10A",
+  "module": "Module 10",
+  "moduleName": "Context API and Global State Management",
+  "title": "Redux Preferences Slice for Multi-Currency & Active Locale",
+  "ctoTopic": "Global State Management",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "10.5 Redux Fundamentals, 10.6 Redux Toolkit, 10.7 State Selection",
+  "targetFiles": [
+    "src/store/slices/preferencesSlice.ts",
+    "src/layouts/Navbar.tsx",
+    "src/utils/formatters.ts"
+  ],
+  "criteria": [
+    "createSlice with setCurrency action and selectActiveCurrency selector",
+    "Navbar currency dropdown dispatching Redux state change",
+    "Storefront prices dynamically update to active currency symbol and converted rate"
+  ]
+}

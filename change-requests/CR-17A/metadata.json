@@ -1,0 +1,20 @@
+{
+  "id": "CR-17A",
+  "module": "Module 17",
+  "moduleName": "Capstone Project — Enterprise React + TypeScript Application",
+  "title": "VIP Concierge Consultation Inquiry Workflow & Bespoke Modal",
+  "ctoTopic": "Capstone Feature",
+  "status": "PROPOSED",
+  "effort": "3-4 hrs",
+  "difficulty": "Medium-High",
+  "curriculum": "17.1 Requirements, 17.3 UI Development, 17.7 Authentication, 17.8 Validation",
+  "targetFiles": [
+    "src/features/concierge/ConciergeModal.tsx",
+    "src/pages/ProductDetailPage.tsx"
+  ],
+  "criteria": [
+    "VIP Concierge modal trigger on high-value jewelry and luxury clothing",
+    "Form collecting preferred appointment date, time, and consultation styling notes",
+    "Confirmation notice and booking confirmation state management"
+  ]
+}

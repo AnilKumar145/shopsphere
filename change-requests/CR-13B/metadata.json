@@ -1,0 +1,20 @@
+{
+  "id": "CR-13B",
+  "module": "Module 13",
+  "moduleName": "Performance Optimization",
+  "title": "Stable Callback References with useCallback & Virtualized Inventory Scroll",
+  "ctoTopic": "Performance related CRs",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "13.2 React.memo, 13.3 useCallback, 13.4 List Optimization",
+  "targetFiles": [
+    "src/pages/ProductListPage.tsx",
+    "src/pages/AdminPage.tsx"
+  ],
+  "criteria": [
+    "Wrap event handlers (onFilterChange, onSortChange) in useCallback with stable dependencies",
+    "Wrap ProductCard in React.memo with custom arePropsEqual comparator",
+    "Smooth 60fps scrolling and eliminate redundant child re-render cycles"
+  ]
+}

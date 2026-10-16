@@ -1,0 +1,19 @@
+{
+  "id": "CR-07B",
+  "module": "Module 7",
+  "moduleName": "React Hooks with TypeScript",
+  "title": "Custom Hook: useFocusTrap for Modal Keyboard Accessibility",
+  "ctoTopic": "Accessibility & Portals",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "7.3 useRef, 7.8 Custom Hooks, 7.9 DOM Management",
+  "targetFiles": [
+    "src/hooks/useFocusTrap.ts"
+  ],
+  "criteria": [
+    "useFocusTrap(isActive) trapping Tab and Shift+Tab cycles inside dialog container",
+    "Restores previous active element focus upon modal dismissal",
+    "Accessible keyboard Escape listener integration"
+  ]
+}

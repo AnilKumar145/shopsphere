@@ -1,0 +1,20 @@
+{
+  "id": "CR-05B",
+  "module": "Module 5",
+  "moduleName": "State Management with TypeScript",
+  "title": "Shared Pricing Calculation Engine & Financial Breakdown State",
+  "ctoTopic": "Shared TS component with logic and calculations",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "5.2 Complex State, 5.6 Reducer Patterns, 5.7 Derived State Calculations",
+  "targetFiles": [
+    "src/utils/pricingEngine.ts",
+    "src/components/common/PriceBreakdown.tsx"
+  ],
+  "criteria": [
+    "Pure functions calculating volume tiers (5%, 10%, 15%) and sales tax (8.25%)",
+    "Free shipping eligibility progress meter (threshold: $150)",
+    "<PriceBreakdown /> component displaying real-time financial totals"
+  ]
+}

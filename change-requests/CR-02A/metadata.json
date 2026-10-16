@@ -1,0 +1,20 @@
+{
+  "id": "CR-02A",
+  "module": "Module 2",
+  "moduleName": "TypeScript Fundamentals for React",
+  "title": "Multi-Currency Union Types & Pure Conversion Utilities",
+  "ctoTopic": "Multi-Currency Types",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "2.1 Annotations, 2.2 Functions, 2.5 Union Types, 2.6 Narrowing, 2.8 Type Exports",
+  "targetFiles": [
+    "src/types/currency.ts",
+    "src/utils/currencyUtils.ts"
+  ],
+  "criteria": [
+    "Define CurrencyCode = \"USD\" | \"EUR\" | \"GBP\" | \"JPY\"",
+    "Implement convertCurrency(amount, from, to) with strict return typing",
+    "Exhaustive switch/narrowing on currency codes with zero any types"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "CR-17B",
+  "module": "Module 17",
+  "moduleName": "Capstone Project — Enterprise React + TypeScript Application",
+  "title": "Interactive Multi-Stage Order Delivery Milestone Progress Timeline",
+  "ctoTopic": "Capstone Feature",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "17.3 UI Development, 17.4 State Management, 17.9 Animation & Design",
+  "targetFiles": [
+    "src/components/orders/OrderTimeline.tsx",
+    "src/pages/OrderConfirmationPage.tsx"
+  ],
+  "criteria": [
+    "5-stage animated progress timeline: Confirmed -> Packed -> In Transit -> Out for Delivery -> Delivered",
+    "Responsive design adapting from horizontal desktop bar to vertical mobile stepper",
+    "Dynamic timestamp milestones derived from order placement time"
+  ]
+}

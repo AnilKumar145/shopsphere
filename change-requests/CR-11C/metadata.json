@@ -1,0 +1,19 @@
+{
+  "id": "CR-11C",
+  "module": "Module 11",
+  "moduleName": "Authentication and Authorization",
+  "title": "Client-Side Security Sanitization (XSS Stripping & Card Masking)",
+  "ctoTopic": "Security related CRs",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "11.7 Security Considerations, Input Sanitization, Masking",
+  "targetFiles": [
+    "src/utils/security.ts"
+  ],
+  "criteria": [
+    "sanitizeInput(text) utility stripping HTML script tags and javascript: URIs",
+    "maskCardNumber(pan) displaying only last 4 digits (e.g. •••• •••• •••• 4242)",
+    "clearSecureSession() securely wiping sensitive credentials on logout"
+  ]
+}

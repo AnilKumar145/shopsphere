@@ -1,0 +1,21 @@
+{
+  "id": "CR-06C",
+  "module": "Module 6",
+  "moduleName": "Events and Forms with TypeScript",
+  "title": "Reusable Controlled Form Element Primitives & Error Summaries",
+  "ctoTopic": "Form validation",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "6.4 Controlled Components, 6.7 Reusable Form Components, 6.8 Form Accessibility",
+  "targetFiles": [
+    "src/components/ui/Input.tsx",
+    "src/components/ui/Select.tsx",
+    "src/components/ui/FormElements.css"
+  ],
+  "criteria": [
+    "Reusable <Input /> and <Select /> with typed HTML input props",
+    "Accessible aria-invalid and aria-describedby binding on errors",
+    "Unified form error banner component for validation summaries"
+  ]
+}

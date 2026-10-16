@@ -1,0 +1,20 @@
+{
+  "id": "CR-06B",
+  "module": "Module 6",
+  "moduleName": "Events and Forms with TypeScript",
+  "title": "Checkout Payment Validation with Luhn Algorithm & Card Formatting",
+  "ctoTopic": "Form validation & Security",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "6.3 Input Events, 6.5 Form Models, 6.6 Validation Algorithms, 6.8 Advanced Forms",
+  "targetFiles": [
+    "src/pages/CheckoutPage.tsx",
+    "src/utils/security.ts"
+  ],
+  "criteria": [
+    "Implement Luhn algorithm checksum to validate credit card numbers",
+    "Real-time card number masking and MM/YY expiry formatting",
+    "Prevent checkout submission when validation fails with visible field errors"
+  ]
+}

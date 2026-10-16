@@ -1,0 +1,19 @@
+{
+  "id": "CR-08A",
+  "module": "Module 8",
+  "moduleName": "Routing with React Router and TypeScript",
+  "title": "Order Status Filter Route & Query Parameter Synchronization",
+  "ctoTopic": "Routing",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Medium",
+  "curriculum": "8.1 Routing Fundamentals, 8.3 Navigation, 8.6 Query Parameters",
+  "targetFiles": [
+    "src/pages/OrdersPage.tsx"
+  ],
+  "criteria": [
+    "Synchronize order filter tabs with useSearchParams (?status=active | cancelled | delivered)",
+    "Direct URL navigation loads corresponding filtered order list",
+    "Browser back/forward history properly restores filter tab"
+  ]
+}

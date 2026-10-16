@@ -1,0 +1,30 @@
+.currency-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--color-bg-subtle, #f4f4f5);
+  border: 1px solid var(--color-border-subtle, #e4e4e7);
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.currency-selector:hover {
+  border-color: var(--color-accent, #c5a880);
+}
+
+.currency-selector__icon {
+  color: var(--color-text-muted, #71717a);
+  pointer-events: none;
+}
+
+.currency-selector__select {
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #18181b);
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+}

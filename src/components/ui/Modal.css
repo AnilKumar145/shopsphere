@@ -1,0 +1,110 @@
+.ui-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-backdrop);
+  padding: var(--space-4);
+  animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ui-modal-content {
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border-subtle);
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: var(--z-modal);
+  animation: modalScaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ui-modal-content--sm {
+  max-width: 420px;
+}
+.ui-modal-content--md {
+  max-width: 560px;
+}
+.ui-modal-content--lg {
+  max-width: 760px;
+}
+.ui-modal-content--xl {
+  max-width: 960px;
+}
+
+.ui-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+  gap: var(--space-4);
+}
+
+.ui-modal-title {
+  font-size: var(--text-xl);
+  font-family: var(--font-serif);
+  margin-bottom: var(--space-1);
+}
+
+.ui-modal-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.ui-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.ui-modal-close:hover {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+}
+
+.ui-modal-body {
+  padding: var(--space-6);
+  overflow-y: auto;
+}
+
+.ui-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

@@ -1,0 +1,190 @@
+.quickview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(17, 17, 17, 0.65);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.quickview-content {
+  position: relative;
+  background: var(--color-surface, #ffffff);
+  border-radius: var(--radius-xl, 16px);
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-border, #e5e5e5);
+}
+
+.quickview-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  background: var(--color-bg-secondary, #fafafa);
+  border: 1px solid var(--color-border, #e5e5e5);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary, #666666);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quickview-close:hover {
+  background: var(--color-border, #e5e5e5);
+  color: var(--color-text-primary, #111111);
+}
+
+.quickview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+}
+
+@media (max-width: 768px) {
+  .quickview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quickview-image-pane {
+  background: var(--color-bg-secondary, #fafafa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  border-right: 1px solid var(--color-border, #e5e5e5);
+}
+
+@media (max-width: 768px) {
+  .quickview-image-pane {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border, #e5e5e5);
+    padding: 1.5rem;
+  }
+}
+
+.quickview-image {
+  max-width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.quickview-details-pane {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .quickview-details-pane {
+    padding: 1.5rem;
+  }
+}
+
+.quickview-category {
+  font-size: var(--text-xs, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent, #c2410c);
+  font-weight: var(--font-semibold, 600);
+  margin-bottom: 0.5rem;
+}
+
+.quickview-title {
+  font-size: var(--text-xl, 1.25rem);
+  font-family: var(--font-serif, serif);
+  color: var(--color-text-primary, #111111);
+  line-height: var(--leading-tight, 1.25);
+  margin-bottom: 0.75rem;
+}
+
+.quickview-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.quickview-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.quickview-rating-text {
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--color-text-muted, #888888);
+}
+
+.quickview-price {
+  font-size: var(--text-2xl, 1.5rem);
+  font-family: var(--font-serif, serif);
+  color: var(--color-accent, #c2410c);
+  margin-bottom: 1rem;
+}
+
+.quickview-description {
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--leading-relaxed, 1.625);
+  color: var(--color-text-secondary, #666666);
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.quickview-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-bg-secondary, #fafafa);
+  border-radius: var(--radius-md, 8px);
+}
+
+.quickview-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--color-text-secondary, #666666);
+}
+
+.quickview-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.quickview-footer {
+  border-top: 1px solid var(--color-border, #e5e5e5);
+  padding-top: 1rem;
+}
+
+.quickview-view-full {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--font-medium, 500);
+  color: var(--color-text-primary, #111111);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.quickview-view-full:hover {
+  color: var(--color-accent, #c2410c);
+}

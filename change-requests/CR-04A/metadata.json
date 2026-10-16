@@ -1,0 +1,21 @@
+{
+  "id": "CR-04A",
+  "module": "Module 4",
+  "moduleName": "Rendering and Styling in React with TypeScript",
+  "title": "Luxury Dark Mode & Dynamic CSS Theme Tokens",
+  "ctoTopic": "Theme & Styling",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "4.1 Expressions in JSX, 4.2 Conditional Rendering, 4.3 Dynamic Styling, 4.4 CSS Tokens",
+  "targetFiles": [
+    "src/styles/index.css",
+    "src/components/common/ThemeToggle.tsx",
+    "src/layouts/Navbar.tsx"
+  ],
+  "criteria": [
+    "Implement data-theme=\"light\" | \"dark\" CSS Custom Property tokens",
+    "Build <ThemeToggle /> component with smooth 200ms CSS transitions",
+    "Persist customer theme preference in localStorage"
+  ]
+}

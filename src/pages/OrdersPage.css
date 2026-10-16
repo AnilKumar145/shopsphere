@@ -1,0 +1,189 @@
+.orders-page {
+  padding: var(--space-8) 0 var(--space-20);
+}
+
+.orders-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: var(--space-4);
+}
+
+.orders-title {
+  font-size: var(--text-3xl);
+  font-family: var(--font-serif);
+}
+
+.orders-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.orders-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+}
+
+.orders-clear-btn:hover {
+  color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.orders-empty-card {
+  max-width: 540px;
+  margin: var(--space-12) auto;
+  text-align: center;
+  background-color: var(--color-bg-surface);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-12) var(--space-8);
+}
+
+.orders-empty-icon {
+  display: inline-flex;
+  padding: var(--space-4);
+  background-color: var(--color-bg-subtle);
+  border-radius: 50%;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.orders-empty-title {
+  font-size: var(--text-2xl);
+  font-family: var(--font-serif);
+  margin-bottom: var(--space-2);
+}
+
+.orders-empty-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+/* Modal details */
+.order-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.order-modal__status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.order-modal__label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.order-modal__payment {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.order-modal__heading {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.order-modal__items-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.order-modal__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.order-modal__item-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 4px;
+}
+
+.order-modal__item-info {
+  flex: 1;
+}
+
+.order-modal__item-info strong {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-text-primary);
+}
+
+.order-modal__item-info span {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.order-modal__item-price {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  font-family: var(--font-serif);
+}
+
+.order-modal__shipping {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+}
+
+.order-modal__shipping p {
+  font-size: 0.75rem;
+  margin-top: 2px;
+  line-height: var(--leading-normal);
+}
+
+.order-modal__totals {
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.order-modal__totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.order-modal__totals-row--total {
+  font-size: var(--text-base);
+  font-weight: 700;
+  font-family: var(--font-serif);
+  color: var(--color-text-primary);
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--space-2);
+  margin-top: var(--space-1);
+}

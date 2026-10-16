@@ -1,0 +1,20 @@
+{
+  "id": "CR-10B",
+  "module": "Module 10",
+  "moduleName": "Context API and Global State Management",
+  "title": "Redux Toolkit Toast Notification Feed & Auto-Dismiss Dispatcher",
+  "ctoTopic": "Global State Management",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "10.4 Global State Architecture, 10.6 Redux Toolkit Slices, 10.7 Typed Hooks",
+  "targetFiles": [
+    "src/store/slices/preferencesSlice.ts",
+    "src/components/common/ToastContainer.tsx"
+  ],
+  "criteria": [
+    "Global addToast and removeToast actions with unique UUID generation",
+    "<ToastContainer /> consuming toasts from Redux store with 4000ms auto-dismiss",
+    "Support toast variants: success, info, warning, error"
+  ]
+}

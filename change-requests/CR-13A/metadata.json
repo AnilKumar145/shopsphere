@@ -1,0 +1,19 @@
+{
+  "id": "CR-13A",
+  "module": "Module 13",
+  "moduleName": "Performance Optimization",
+  "title": "Memoized Catalog Computations with useMemo for Price & Category Analytics",
+  "ctoTopic": "Performance related CRs",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Medium",
+  "curriculum": "13.1 React Rendering, 13.3 useMemo & useCallback, 13.7 TypeScript Performance",
+  "targetFiles": [
+    "src/pages/ProductListPage.tsx"
+  ],
+  "criteria": [
+    "useMemo wrapping price min/max calculations and category count aggregations",
+    "Recalculation occurs only when products list changes, not on filter typing",
+    "Zero performance lag when browsing 100+ items"
+  ]
+}

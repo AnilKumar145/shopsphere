@@ -1,0 +1,21 @@
+{
+  "id": "CR-09B",
+  "module": "Module 9",
+  "moduleName": "REST API Integration with TypeScript",
+  "title": "Admin Batch Category Price Adjustment & TanStack Mutation Cache",
+  "ctoTopic": "API mutations & Cache",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium-High",
+  "curriculum": "9.6 CRUD Operations, 9.9 TanStack Query Mutations & Cache Invalidation",
+  "targetFiles": [
+    "src/pages/AdminPage.tsx",
+    "src/hooks/useCatalog.ts",
+    "src/services/apiService.ts"
+  ],
+  "criteria": [
+    "Batch Price Adjustment modal for category-wide markdowns (-50% to +50%)",
+    "TanStack Query useMutation invalidating [\"products\"] query key on success",
+    "Immediate synchronization across Admin inventory and storefront catalog"
+  ]
+}

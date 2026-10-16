@@ -1,0 +1,20 @@
+{
+  "id": "CR-08B",
+  "module": "Module 8",
+  "moduleName": "Routing with React Router and TypeScript",
+  "title": "Protected & Public Route Guards with Return Path Redirection",
+  "ctoTopic": "Protected and unprotected routes",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "8.2 Route Components, 8.7 Protected Routes, 8.8 Fallback Routes",
+  "targetFiles": [
+    "src/components/auth/ProtectedRoute.tsx",
+    "src/router/index.tsx"
+  ],
+  "criteria": [
+    "<ProtectedRoute /> guard enforcing role access (customer vs admin)",
+    "Redirects unauthenticated users to /login preserving return path in state",
+    "Seamless return redirect back to target destination upon login"
+  ]
+}

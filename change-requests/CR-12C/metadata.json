@@ -1,0 +1,20 @@
+{
+  "id": "CR-12C",
+  "module": "Module 12",
+  "moduleName": "Advanced React Component Patterns",
+  "title": "Generic Table Primitive with Type-Safe Column Definitions (GenericTable<T>)",
+  "ctoTopic": "TypeScript Generics & Components",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium-High",
+  "curriculum": "12.2 Generic Components, Type Parameters, Generic Props",
+  "targetFiles": [
+    "src/components/ui/GenericTable.tsx",
+    "src/components/ui/GenericTable.css"
+  ],
+  "criteria": [
+    "<GenericTable<T>> accepting data: T[] and ColumnDef<T>[] definitions",
+    "Type-safe accessor keys and custom cell renderers",
+    "Empty state fallback and responsive overflow scrolling"
+  ]
+}

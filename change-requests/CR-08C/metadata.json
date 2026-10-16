@@ -1,0 +1,22 @@
+{
+  "id": "CR-08C",
+  "module": "Module 8",
+  "moduleName": "Routing with React Router and TypeScript",
+  "title": "Reusable Application Shell & Layout System (RootLayout)",
+  "ctoTopic": "Creating and reusing layouts",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Low-Medium",
+  "curriculum": "8.2 Nested Route Layouts, 8.5 Outlet Component, 8.8 Error Boundary Routes",
+  "targetFiles": [
+    "src/layouts/RootLayout.tsx",
+    "src/layouts/Navbar.tsx",
+    "src/layouts/Footer.tsx",
+    "src/router/index.tsx"
+  ],
+  "criteria": [
+    "<RootLayout /> wrapping nested routes with <Outlet />",
+    "Shared luxury Navbar, Footer, and ToastContainer across all pages",
+    "Scroll restoration to top on route navigation"
+  ]
+}

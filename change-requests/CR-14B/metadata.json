@@ -1,0 +1,20 @@
+{
+  "id": "CR-14B",
+  "module": "Module 14",
+  "moduleName": "Testing React Applications with TypeScript",
+  "title": "Component Interaction Tests for Form Validation (Checkout & Reviews)",
+  "ctoTopic": "lots of unit tests to be written",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "14.3 Component Testing, 14.4 User Events & Interaction Testing",
+  "targetFiles": [
+    "src/test/CheckoutForm.test.tsx",
+    "src/test/ReviewForm.test.tsx"
+  ],
+  "criteria": [
+    "Test checkout validation blocking invalid credit card numbers via Luhn algorithm",
+    "Test review form asserting inline errors when comment length is under 20 chars",
+    "Simulate typing and clicking with @testing-library/user-event"
+  ]
+}

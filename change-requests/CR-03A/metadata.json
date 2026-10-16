@@ -1,0 +1,21 @@
+{
+  "id": "CR-03A",
+  "module": "Module 3",
+  "moduleName": "React Components with TypeScript",
+  "title": "Parent-to-Child Props Flow & Multi-Level Catalog Hierarchy",
+  "ctoTopic": "Passing data from parent to child component",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "3.1 Functional Components, 3.2 Props Interfaces, 3.4 Return Types, 3.6 Component Organization",
+  "targetFiles": [
+    "src/pages/ProductListPage.tsx",
+    "src/features/catalog/components/ProductCard.tsx",
+    "src/components/catalog/ProductViewToggle.tsx"
+  ],
+  "criteria": [
+    "Define explicit, strict interfaces for child component props",
+    "Pass callbacks (onQuickView, onAddToBag) cleanly without prop drilling leaks",
+    "Proper TypeScript FC return typing with zero any"
+  ]
+}

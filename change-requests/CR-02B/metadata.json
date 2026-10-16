@@ -1,0 +1,20 @@
+{
+  "id": "CR-02B",
+  "module": "Module 2",
+  "moduleName": "TypeScript Fundamentals for React",
+  "title": "Generic Record DTOs & Runtime Configuration Types",
+  "ctoTopic": "Env variables and configuration",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Medium",
+  "curriculum": "2.3 Interfaces, 2.4 Type Aliases, 2.7 Generics & Record<K, V>",
+  "targetFiles": [
+    "src/types/currency.ts",
+    "src/config/appConfig.ts"
+  ],
+  "criteria": [
+    "Define ExchangeRateMap = Record<CurrencyCode, number>",
+    "Create generic AppConfig interface with strongly-typed properties",
+    "Enforce zero implicit any in generic type parameters"
+  ]
+}

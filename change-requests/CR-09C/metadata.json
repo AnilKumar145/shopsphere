@@ -1,0 +1,20 @@
+{
+  "id": "CR-09C",
+  "module": "Module 9",
+  "moduleName": "REST API Integration with TypeScript",
+  "title": "Typed API Response Models & DTO Normalization Layer",
+  "ctoTopic": "API data modeling",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Medium",
+  "curriculum": "9.3 API Response Types, 9.5 Loading and Error States, 9.8 Data Normalization",
+  "targetFiles": [
+    "src/types/index.ts",
+    "src/services/api.ts"
+  ],
+  "criteria": [
+    "Strict TypeScript interfaces for raw API DTOs vs client domain models",
+    "Pure transformation functions mapping raw data safely",
+    "Zero any types during API response deserialization"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "CR-04B",
+  "module": "Module 4",
+  "moduleName": "Rendering and Styling in React with TypeScript",
+  "title": "Dual-Mode Catalog List/Grid Rendering & Responsive ProductRow",
+  "ctoTopic": "Displaying the list in a page & Responsiveness",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "4.2 Conditional Rendering, 4.3 Dynamic Layouts, 4.5 Responsive UI States",
+  "targetFiles": [
+    "src/pages/ProductListPage.tsx",
+    "src/components/catalog/ProductViewToggle.tsx",
+    "src/features/catalog/components/ProductListRow.tsx"
+  ],
+  "criteria": [
+    "Implement viewMode toggle state (\"grid\" | \"list\")",
+    "Build <ProductListRow /> layout with thumbnail, rating, and actions",
+    "Responsive design adapting gracefully on mobile, tablet, and desktop"
+  ]
+}

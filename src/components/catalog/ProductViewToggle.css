@@ -1,0 +1,33 @@
+.product-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-bg-secondary, #fafafa);
+  border: 1px solid var(--color-border, #e5e5e5);
+  border-radius: var(--radius-md, 8px);
+  padding: 3px;
+  gap: 2px;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary, #666666);
+  border-radius: var(--radius-sm, 6px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-toggle-btn:hover {
+  color: var(--color-text-primary, #111111);
+}
+
+.view-toggle-btn--active {
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text-primary, #111111);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}

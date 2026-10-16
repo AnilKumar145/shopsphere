@@ -1,0 +1,20 @@
+{
+  "id": "CR-11B",
+  "module": "Module 11",
+  "moduleName": "Authentication and Authorization",
+  "title": "Session Token Expiration Interceptor & Graceful Re-Authentication",
+  "ctoTopic": "Security & Session management",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "11.4 Token Handling, 11.5 Route Guards, 11.7 Security Considerations",
+  "targetFiles": [
+    "src/context/AuthContext.tsx",
+    "src/services/axiosClient.ts"
+  ],
+  "criteria": [
+    "Token validity checker detecting expired session tokens",
+    "Axios 401 response interceptor clearing expired token and triggering logout",
+    "Display re-login toast and redirect back to current page upon successful auth"
+  ]
+}

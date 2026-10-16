@@ -1,0 +1,20 @@
+{
+  "id": "CR-14A",
+  "module": "Module 14",
+  "moduleName": "Testing React Applications with TypeScript",
+  "title": "Vitest Unit Tests for Pricing Calculation Engine & Financial Math",
+  "ctoTopic": "lots of unit tests to be written",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "14.1 Testing Fundamentals, 14.2 Vitest Environment, 14.8 Test Isolation",
+  "targetFiles": [
+    "src/test/pricingEngine.test.ts",
+    "src/test/cartCalculations.test.ts"
+  ],
+  "criteria": [
+    "Test volume tier discounts (5% at $100, 10% at $250, 15% at $500)",
+    "Test promotional discount codes (ATELIER20, VIP50) and boundary edge cases",
+    "Test free shipping threshold qualification ($150 cutoff) with 100% assertions passing"
+  ]
+}

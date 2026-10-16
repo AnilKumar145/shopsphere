@@ -1,0 +1,20 @@
+{
+  "id": "CR-11A",
+  "module": "Module 11",
+  "moduleName": "Authentication and Authorization",
+  "title": "Customer Profile Security & Password Update Validation Guard",
+  "ctoTopic": "Security & Auth",
+  "status": "PROPOSED",
+  "effort": "2-3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "11.1 Auth Fundamentals, 11.2 Login Integration, 11.6 Role Access",
+  "targetFiles": [
+    "src/pages/AccountPage.tsx",
+    "src/context/AuthContext.tsx"
+  ],
+  "criteria": [
+    "Profile form allowing customer name and contact updates",
+    "Password update requiring current password check and minimum 8-char validation",
+    "Role-based permission check ensuring customer cannot escalate privileges to admin"
+  ]
+}

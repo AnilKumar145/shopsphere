@@ -1,0 +1,19 @@
+{
+  "id": "CR-15A",
+  "module": "Module 15",
+  "moduleName": "Enterprise React Application Architecture",
+  "title": "Enterprise Structured Logger & Custom Exception Hierarchy",
+  "ctoTopic": "Exception handling and logging",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Medium",
+  "curriculum": "15.1 Architecture, 15.4 Service Architecture, 15.7 Code Quality, 15.10 Strict TS",
+  "targetFiles": [
+    "src/services/logger.ts"
+  ],
+  "criteria": [
+    "Structured Logger singleton supporting debug, info, warn, error with ISO timestamps",
+    "Custom typed exceptions: AppError, HttpError, ValidationError extending Error",
+    "In-memory log event buffer accessible for diagnostic export"
+  ]
+}

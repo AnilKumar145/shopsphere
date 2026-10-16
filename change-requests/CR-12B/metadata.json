@@ -1,0 +1,20 @@
+{
+  "id": "CR-12B",
+  "module": "Module 12",
+  "moduleName": "Advanced React Component Patterns",
+  "title": "Compound Dialog Pattern: Modal.Header, Modal.Body, Modal.Footer",
+  "ctoTopic": "Component Architecture",
+  "status": "PROPOSED",
+  "effort": "2 hrs",
+  "difficulty": "Medium",
+  "curriculum": "12.3 Compound Components, 12.1 Component Design, 12.2 Generic Props",
+  "targetFiles": [
+    "src/components/ui/Modal.tsx",
+    "src/components/ui/Modal.css"
+  ],
+  "criteria": [
+    "Implement compound pattern: <Modal.Header>, <Modal.Body>, <Modal.Footer>",
+    "Shared context providing isOpen and onClose to sub-components",
+    "Strict TypeScript typings on compound component sub-properties"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "CR-09A",
+  "module": "Module 9",
+  "moduleName": "REST API Integration with TypeScript",
+  "title": "Axios HTTP Client with Interceptors, Bearer Auth & Fallback Resilience",
+  "ctoTopic": "API call axios",
+  "status": "PROPOSED",
+  "effort": "3 hrs",
+  "difficulty": "Medium",
+  "curriculum": "9.1 API Fundamentals, 9.2 Async HTTP, 9.7 API Service Layer, 9.8 Data Transformation",
+  "targetFiles": [
+    "src/services/axiosClient.ts"
+  ],
+  "criteria": [
+    "Axios instance with request interceptor injecting Correlation-ID and Bearer token",
+    "Response interceptor normalizing errors into HttpError instances",
+    "Resilient fallback to mock catalog when external network fails"
+  ]
+}
