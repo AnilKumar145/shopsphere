@@ -1,33 +1,25 @@
 /**
  * ============================================================================
  * 🎓 TRAINEE EXERCISE: CR-07C — Custom Hook: useDebounce
- * Module 7: React Hooks with TypeScript (Units 7.2, 7.8, 7.9)
+ * Module 7: React Hooks with TypeScript (Units 7.8, 7.9, 13.3)
  * ----------------------------------------------------------------------------
- * 🎯 Objective: Optimize search input typing by delaying state emission until
- *    user pauses keystrokes, avoiding rapid re-filtering churn.
- * 📁 Reference: shopsphere-solution/src/hooks/useDebounce.ts
+ * 🎯 Objective: Create a generic debouncing hook that delays updating a value
+ *    until a specified delay has elapsed since the last change.
+ * 📖 Reference Spec: change-requests/CR-07C/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/hooks/useDebounce.ts
  * ============================================================================
  */
 
+import { useState } from 'react';
+
 /**
- * Generic useDebounce hook
- * Demonstrates 7.8 Custom Hooks, 7.9 Hook Design Patterns, 13.3 Hook Optimization
+ * 📝 STEP 1: State Initialization
+ * 📝 STEP 2: Timer Lifecycle & Cleanup
+ * 📝 STEP 3: Return Value
  */
-
-import { useState, useEffect } from 'react';
-
 export function useDebounce<T>(value: T, delayMs: number = 300): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delayMs);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delayMs]);
-
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+  void delayMs;
+  const [debouncedValue] = useState<T>(value);
   return debouncedValue;
 }

@@ -1,18 +1,13 @@
 /**
  * ============================================================================
- * 🎓 TRAINEE EXERCISE: CR-09A — Axios HTTP Client with Interceptors & Fallbacks
- * Module 9: REST API Integration with TypeScript (Units 9.1, 9.2, 9.7, 9.8)
+ * 🎓 TRAINEE EXERCISE: CR-09A — Enterprise Axios HTTP Client Layer
+ * Module 9: REST API Integration with TypeScript (Units 9.1, 9.2, 9.3, 9.4)
  * ----------------------------------------------------------------------------
- * 🎯 Objective: Configure Axios instance with correlation headers, bearer auth,
- *    structured error normalization, and mock catalog fallback resilience.
- * 📁 Reference: shopsphere-solution/src/services/axiosClient.ts
+ * 🎯 Objective: Build a resilient Axios HTTP client with request/response
+ *    interceptors, bearer token attachment, correlation IDs, and error normalization.
+ * 📖 Reference Spec: change-requests/CR-09A/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/services/axiosClient.ts
  * ============================================================================
- */
-
-/**
- * Enterprise Axios HTTP Client Layer
- * Demonstrates Module 9: REST API Integration with TypeScript
- * Features: Request/Response Interceptors, Auth Header Injection, Error Normalization, Timeout & Retry Fallbacks
  */
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
@@ -21,7 +16,7 @@ import { HttpError, logger } from './logger';
 import { Product } from '../types';
 import { FALLBACK_PRODUCTS, FALLBACK_CATEGORIES } from './mockData';
 
-// 1. Create configured Axios client instance
+// 📝 STEP 1: Create Configured Axios Instance
 export const axiosInstance: AxiosInstance = axios.create({
   baseURL: appConfig.apiUrl,
   timeout: appConfig.timeoutMs,
@@ -31,13 +26,17 @@ export const axiosInstance: AxiosInstance = axios.create({
   },
 });
 
-// 2. Request Interceptor: Attach Auth Token and Request Correlation ID
+// 📝 STEP 2: Request Interceptor (Auth Token & Correlation ID)
+// 🛠️ WHAT TO DO:
+//    1. Attach 'X-Correlation-Id' header with a unique request identifier.
+//    2. Read 'shopsphere_auth' from localStorage; if present with a token,
+//       attach 'Authorization: Bearer <token>'.
 axiosInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
     const correlationId = `req-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
     config.headers.set('X-Correlation-Id', correlationId);
 
-    // Retrieve auth token from localStorage if present
     try {
       const storedAuth = localStorage.getItem('shopsphere_auth');
       if (storedAuth) {
@@ -47,31 +46,25 @@ axiosInstance.interceptors.request.use(
         }
       }
     } catch {
-      // Ignore JSON parse errors in storage
+      // Ignore parse error
     }
-
-    logger.debug(`[Axios Outgoing] ${config.method?.toUpperCase()} ${config.url}`, {
-      correlationId,
-      params: config.params,
-    });
 
     return config;
   },
   (error) => {
-    logger.error('[Axios Request Error]', error);
     return Promise.reject(error);
   }
 );
 
-// 3. Response Interceptor: Latency tracking and error normalization
+// 📝 STEP 3: Response Interceptor (Error Normalization)
+// 🛠️ WHAT TO DO:
+//    Normalize raw Axios errors into custom HttpError instances with status and context.
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
-    logger.debug(`[Axios Success] ${response.status} ${response.config.url}`, {
-      status: response.status,
-    });
     return response;
   },
   (error) => {
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
     const status = error.response?.status || 500;
     const message = error.response?.data?.message || error.message || 'Network communication failure';
 
@@ -81,12 +74,11 @@ axiosInstance.interceptors.response.use(
       statusText: error.response?.statusText,
     });
 
-    logger.error(`[Axios Response Error ${status}] ${error.config?.url}`, normalizedError);
     return Promise.reject(normalizedError);
   }
 );
 
-// 4. Type-safe Axios Service Wrapper with Resilient Mock Fallbacks
+// 📝 STEP 4: Type-Safe Service Wrapper with Mock Fallbacks
 export const axiosService = {
   async get<T>(url: string, config?: AxiosRequestConfig, fallback?: T): Promise<T> {
     try {
@@ -116,7 +108,6 @@ export const axiosService = {
     return response.data;
   },
 
-  // Specialized Domain Endpoints using Axios
   async getProducts(limit?: number): Promise<Product[]> {
     const params = limit ? { limit } : undefined;
     return this.get<Product[]>('/products', { params }, FALLBACK_PRODUCTS);
@@ -140,12 +131,7 @@ export const axiosService = {
     try {
       return await this.post<Product>('/products', newProduct);
     } catch {
-      // Mock creation when external API is offline
-      return {
-        id: Date.now(),
-        ...newProduct,
-        rating: { rate: 5.0, count: 1 },
-      };
+      return { id: Date.now(), ...newProduct, rating: { rate: 5.0, count: 1 } };
     }
   },
 
@@ -154,8 +140,7 @@ export const axiosService = {
       return await this.put<Product>(`/products/${id}`, updates);
     } catch {
       const fallbackItem = FALLBACK_PRODUCTS.find((p) => p.id === id);
-      const safeId = fallbackItem ? fallbackItem.id : id;
-      return { ...fallbackItem, ...updates, id: safeId } as Product;
+      return { ...fallbackItem, ...updates, id: fallbackItem ? fallbackItem.id : id } as Product;
     }
   },
 
@@ -164,7 +149,7 @@ export const axiosService = {
       await this.delete(`/products/${id}`);
       return true;
     } catch {
-      return true; // Graceful mock fallback
+      return true;
     }
   },
 };

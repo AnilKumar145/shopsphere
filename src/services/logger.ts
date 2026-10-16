@@ -1,19 +1,16 @@
 /**
  * ============================================================================
- * 🎓 TRAINEE EXERCISE: CR-15A — Structured Enterprise Logger & Exception Hierarchy
- * Module 15: Enterprise React Application Architecture (Units 15.1, 15.4, 15.10)
+ * 🎓 TRAINEE EXERCISE: CR-15A — Enterprise Structured Client-Side Logger
+ * Module 15: Enterprise Architecture & Production Readiness (Unit 15.6)
  * ----------------------------------------------------------------------------
- * 🎯 Objective: Provide centralized structured logging with ISO timestamps and
- *    custom exception hierarchy (AppError, HttpError, ValidationError).
- * 📁 Reference: shopsphere-solution/src/services/logger.ts
+ * 🎯 Objective: Implement a singleton logging service with structured entry
+ *    formats, severity levels (debug, info, warn, error), and ring buffer history.
+ * 📖 Reference Spec: change-requests/CR-15A/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/services/logger.ts
  * ============================================================================
  */
 
-/**
- * Centralized Enterprise Logger and Exception Handling Service
- * Demonstrates Module 15: 15.4 Service Architecture, 15.7 Code Quality
- * Demonstrates Module 16: 16.6 Production Diagnostics
- */
+import { appConfig } from '../config/appConfig';
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
@@ -28,14 +25,12 @@ export interface LogEntry {
 
 export class AppError extends Error {
   public readonly code: string;
-  public readonly timestamp: string;
   public readonly context?: Record<string, unknown>;
 
-  constructor(message: string, code: string = 'APP_ERROR', context?: Record<string, unknown>) {
+  constructor(message: string, code: string = 'UNKNOWN_ERROR', context?: Record<string, unknown>) {
     super(message);
     this.name = 'AppError';
     this.code = code;
-    this.timestamp = new Date().toISOString();
     this.context = context;
   }
 }
@@ -60,13 +55,24 @@ export class ValidationError extends AppError {
   }
 }
 
-class LoggerService {
+/**
+ * 📝 STEP 1: Log Entry Factory
+ * 📝 STEP 2: Severity Routing (debug, info, warn, error)
+ * 📝 STEP 3: Memory Ring Buffer (maximum 100 entries)
+ * 📝 STEP 4: Buffer Retrieval and Clearing
+ */
+export class LoggerService {
   private logs: LogEntry[] = [];
   private readonly maxLogs: number = 100;
 
-  private createEntry(level: LogLevel, message: string, context?: Record<string, unknown>, stack?: string): LogEntry {
+  private createEntry(
+    level: LogLevel,
+    message: string,
+    context?: Record<string, unknown>,
+    stack?: string
+  ): LogEntry {
     const entry: LogEntry = {
-      id: `log-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      id: `${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
       timestamp: new Date().toISOString(),
       level,
       message,
@@ -83,34 +89,40 @@ class LoggerService {
   }
 
   public debug(message: string, context?: Record<string, unknown>): void {
-    const entry = this.createEntry('debug', message, context);
-    if (import.meta.env?.VITE_DEBUG_MODE === 'true') {
-      console.debug(`[DEBUG] ${entry.timestamp} - ${message}`, context || '');
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+    if (appConfig.featureFlags.enableAuditLogging) {
+      this.createEntry('debug', message, context);
+      console.debug(`[DEBUG] ${message}`, context || '');
     }
   }
 
   public info(message: string, context?: Record<string, unknown>): void {
-    const entry = this.createEntry('info', message, context);
-    console.info(`[INFO] ${entry.timestamp} - ${message}`, context || '');
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+    this.createEntry('info', message, context);
+    console.info(`[INFO] ${message}`, context || '');
   }
 
   public warn(message: string, context?: Record<string, unknown>): void {
-    const entry = this.createEntry('warn', message, context);
-    console.warn(`[WARN] ${entry.timestamp} - ${message}`, context || '');
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+    this.createEntry('warn', message, context);
+    console.warn(`[WARN] ${message}`, context || '');
   }
 
   public error(message: string, error?: unknown, context?: Record<string, unknown>): void {
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
     const stack = error instanceof Error ? error.stack : undefined;
     const errorDetails = error instanceof AppError ? { ...error.context, code: error.code } : context;
-    const entry = this.createEntry('error', message, errorDetails, stack);
-    console.error(`[ERROR] ${entry.timestamp} - ${message}`, error || '', context || '');
+    this.createEntry('error', message, errorDetails, stack);
+    console.error(`[ERROR] ${message}`, error || '', context || '');
   }
 
   public getLogs(): readonly LogEntry[] {
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
     return [...this.logs];
   }
 
   public clear(): void {
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
     this.logs = [];
   }
 }

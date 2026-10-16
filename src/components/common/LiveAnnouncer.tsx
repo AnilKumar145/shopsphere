@@ -1,11 +1,12 @@
 /**
  * ============================================================================
- * 🎓 TRAINEE EXERCISE: CR-15C — WCAG 2.1 AA Live Announcer Region
- * Module 15: Enterprise React Application Architecture (Unit 15.8)
+ * 🎓 TRAINEE EXERCISE: CR-15C — Accessible Live Region Screen Reader Announcer
+ * Module 15: Accessibility & Production Readiness (Units 15.7, 15.8)
  * ----------------------------------------------------------------------------
- * 🎯 Objective: Provide polite screen-reader announcements for dynamic cart
- *    updates and asynchronous state transitions using aria-live="polite".
- * 📁 Reference: shopsphere-solution/src/components/common/LiveAnnouncer.tsx
+ * 🎯 Objective: Provide an invisible ARIA live region (aria-live="polite")
+ *    broadcasting dynamic system alerts and catalog updates to assistive tech.
+ * 📖 Reference Spec: change-requests/CR-15C/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/components/common/LiveAnnouncer.tsx
  * ============================================================================
  */
 
@@ -15,7 +16,13 @@ export interface LiveAnnouncerProps {
   message?: string;
 }
 
+/**
+ * 📝 STEP 1: Manage Live Announcement Message State
+ * 📝 STEP 2: Configure ARIA Attributes (aria-live="polite", aria-atomic="true")
+ * 📝 STEP 3: Apply Visually Hidden CSS Bounds
+ */
 export const LiveAnnouncer: React.FC<LiveAnnouncerProps> = ({ message }) => {
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
   const [currentMessage, setCurrentMessage] = useState(message ?? '');
 
   useEffect(() => {
@@ -26,6 +33,7 @@ export const LiveAnnouncer: React.FC<LiveAnnouncerProps> = ({ message }) => {
 
   return (
     <div
+      id="live-announcer"
       aria-live="polite"
       aria-atomic="true"
       style={{
@@ -36,7 +44,8 @@ export const LiveAnnouncer: React.FC<LiveAnnouncerProps> = ({ message }) => {
         padding: 0,
         overflow: 'hidden',
         clip: 'rect(0, 0, 0, 0)',
-        border: 0
+        whiteSpace: 'nowrap',
+        border: 0,
       }}
     >
       {currentMessage}

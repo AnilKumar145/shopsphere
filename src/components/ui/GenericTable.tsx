@@ -1,20 +1,16 @@
 /**
  * ============================================================================
- * 🎓 TRAINEE EXERCISE: CR-12C — Generic Table Primitive (GenericTable<T>)
- * Module 12: Advanced Component Patterns (Units 12.1, 12.2)
+ * 🎓 TRAINEE EXERCISE: CR-12C — Reusable Generic Data Table Component
+ * Module 12: Advanced Component Design Patterns (Units 12.2, 12.3)
  * ----------------------------------------------------------------------------
- * 🎯 Objective: Author a reusable generic table component with type-safe
- *    column definitions, accessor keys, and custom cell renderers.
- * 📁 Reference: shopsphere-solution/src/components/ui/GenericTable.tsx
+ * 🎯 Objective: Create a type-safe generic table component accepting dynamic
+ *    columns, data rows, custom cell renderers, and empty state fallbacks.
+ * 📖 Reference Spec: change-requests/CR-12C/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/components/ui/GenericTable.tsx
  * ============================================================================
  */
 
-/**
- * Reusable Generic Table Component
- * Demonstrates 2.7 (Generics), 3.5 (Reusable Tables), 12.2 (Generic Components: Generic Props, Type Parameters), 15.5
- */
-
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import './GenericTable.css';
 
 export interface ColumnDefinition<T> {
@@ -33,32 +29,37 @@ export interface GenericTableProps<T> {
   className?: string;
 }
 
+/**
+ * 📝 STEP 1: Table Header Generation
+ * 📝 STEP 2: Row and Column Data Mapping
+ * 📝 STEP 3: Empty State Handling
+ */
 export function GenericTable<T>({
   data,
   columns,
   keyExtractor,
-  emptyMessage = 'No data available to display.',
+  emptyMessage = 'No records found matching your criteria.',
   className = '',
-}: GenericTableProps<T>): React.JSX.Element {
+}: GenericTableProps<T>) {
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
   if (data.length === 0) {
     return (
-      <div className="ui-table__empty">
-        <p>{emptyMessage}</p>
+      <div className={`table-empty-container ${className}`}>
+        <p className="table-empty-text">{emptyMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className={`ui-table-container ${className}`}>
-      <table className="ui-table">
+    <div className={`generic-table-wrapper ${className}`}>
+      <table className="generic-table">
         <thead>
           <tr>
             {columns.map((col) => (
               <th
                 key={col.key}
                 style={{ width: col.width, textAlign: col.align || 'left' }}
-                className="ui-table__th"
-                scope="col"
+                className="generic-th"
               >
                 {col.header}
               </th>
@@ -66,30 +67,19 @@ export function GenericTable<T>({
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => {
-            const rowKey = keyExtractor(item, index);
-            return (
-              <tr key={rowKey} className="ui-table__tr">
-                {columns.map((col) => {
-                  const cellContent = col.render
-                    ? col.render(item, index)
-                    : (item as Record<string, unknown>)[col.key] !== undefined
-                    ? String((item as Record<string, unknown>)[col.key])
-                    : null;
-
-                  return (
-                    <td
-                      key={col.key}
-                      style={{ textAlign: col.align || 'left' }}
-                      className="ui-table__td"
-                    >
-                      {cellContent}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
+          {data.map((item, index) => (
+            <tr key={keyExtractor(item, index)} className="generic-tr">
+              {columns.map((col) => (
+                <td
+                  key={col.key}
+                  style={{ textAlign: col.align || 'left' }}
+                  className="generic-td"
+                >
+                  {col.render ? col.render(item, index) : (item as any)[col.key]}
+                </td>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

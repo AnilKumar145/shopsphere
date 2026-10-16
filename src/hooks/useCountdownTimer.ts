@@ -5,11 +5,12 @@
  * ----------------------------------------------------------------------------
  * 🎯 Objective: Encapsulate countdown interval lifecycle with unmount cleanup
  *    and start/pause/reset control methods.
- * 📁 Reference: shopsphere-solution/src/hooks/useCountdownTimer.ts
+ * 📖 Reference Spec: change-requests/CR-07A/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/hooks/useCountdownTimer.ts
  * ============================================================================
  */
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 export interface CountdownTimerReturn {
   secondsRemaining: number;
@@ -19,40 +20,22 @@ export interface CountdownTimerReturn {
   reset: (newSeconds?: number) => void;
 }
 
+/**
+ * 📝 STEP 1: State Initialization
+ * 📝 STEP 2: Timer Interval Lifecycle & Clear on Unmount
+ * 📝 STEP 3: Control Actions
+ */
 export function useCountdownTimer(initialSeconds: number, onExpire?: () => void): CountdownTimerReturn {
-  // 📝 STEP 1: State Initialization
-  // TODO: Manage secondsRemaining and isActive state
-  const [secondsRemaining, setSecondsRemaining] = useState<number>(initialSeconds);
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const onExpireRef = useRef(onExpire);
-  onExpireRef.current = onExpire;
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+  void onExpire;
+  const [secondsRemaining] = useState<number>(initialSeconds);
+  const [isActive] = useState<boolean>(false);
 
-  // 📝 STEP 2: Timer Interval Lifecycle
-  // TODO: Setup setInterval with useEffect and ensure clearInterval on unmount
-  useEffect(() => {
-    if (!isActive) return;
-
-    const intervalId = window.setInterval(() => {
-      setSecondsRemaining(prev => {
-        if (prev <= 1) {
-          window.clearInterval(intervalId);
-          setIsActive(false);
-          onExpireRef.current?.();
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => window.clearInterval(intervalId);
-  }, [isActive]);
-
-  const start = useCallback(() => setIsActive(true), []);
-  const pause = useCallback(() => setIsActive(false), []);
+  const start = useCallback(() => {}, []);
+  const pause = useCallback(() => {}, []);
   const reset = useCallback((newSeconds?: number) => {
-    setIsActive(false);
-    setSecondsRemaining(newSeconds ?? initialSeconds);
-  }, [initialSeconds]);
+    void newSeconds;
+  }, []);
 
   return { secondsRemaining, isActive, start, pause, reset };
 }

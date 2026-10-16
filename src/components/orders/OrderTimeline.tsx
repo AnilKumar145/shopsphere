@@ -26,7 +26,13 @@ const MILESTONES: DeliveryMilestone[] = [
   'Delivered'
 ];
 
+/**
+ * 📝 STEP 1: Determine Active Milestone Index
+ * 📝 STEP 2: Render Milestone Stepper Nodes with Active States
+ * 📝 STEP 3: Display Order Timestamp Formatted
+ */
 export const OrderTimeline: React.FC<OrderTimelineProps> = ({ currentMilestone, orderTimestamp }) => {
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
   const currentIndex = MILESTONES.indexOf(currentMilestone);
 
   return (

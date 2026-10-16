@@ -1,6 +1,13 @@
 /**
- * Reusable Accessible Form Input
- * Demonstrates 6.4 Controlled Components, 6.7 Reusable Form Components, 7.7 useId
+ * ============================================================================
+ * 🎓 TRAINEE EXERCISE: CR-06C — Reusable Accessible Form Input
+ * Module 6: Forms & User Input in React with TypeScript (Units 6.4, 6.7, 7.7)
+ * ----------------------------------------------------------------------------
+ * 🎯 Objective: Create a polymorphic forwardRef input component integrating
+ *    useId for accessible labels, left/right icon slots, and error feedback.
+ * 📖 Reference Spec: change-requests/CR-06C/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/components/ui/Input.tsx
+ * ============================================================================
  */
 
 import React, { InputHTMLAttributes, useId, forwardRef } from 'react';
@@ -14,6 +21,12 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   rightIcon?: React.ReactNode;
 }
 
+/**
+ * 📝 STEP 1: Generate Unique ID using useId()
+ * 📝 STEP 2: Render Label element linked via htmlFor={inputId}
+ * 📝 STEP 3: Slot Left & Right Icons inside Input Wrapper
+ * 📝 STEP 4: Render Error and Helper Text below Input
+ */
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -24,49 +37,51 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       rightIcon,
       id,
       className = '',
-      required,
       disabled,
-      ...props
+      ...restProps
     },
     ref
-  ): React.JSX.Element => {
+  ) => {
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
     const generatedId = useId();
     const inputId = id || generatedId;
-    const errorId = `${inputId}-error`;
-    const helperId = `${inputId}-helper`;
 
     return (
       <div className={`form-field ${error ? 'form-field--error' : ''} ${className}`}>
         {label && (
-          <label htmlFor={inputId} className="form-field__label">
+          <label htmlFor={inputId} className="form-label">
             {label}
-            {required && <span className="form-field__required" aria-hidden="true"> *</span>}
           </label>
         )}
-        <div className="form-field__input-wrapper">
-          {leftIcon && <span className="form-field__icon form-field__icon--left">{leftIcon}</span>}
+
+        <div className="input-wrapper">
+          {leftIcon && <span className="input-icon input-icon--left">{leftIcon}</span>}
+
           <input
             ref={ref}
             id={inputId}
             disabled={disabled}
-            aria-invalid={!!error}
-            aria-describedby={error ? errorId : helperText ? helperId : undefined}
-            className={`form-field__input ${leftIcon ? 'form-field__input--has-left' : ''} ${
-              rightIcon ? 'form-field__input--has-right' : ''
+            className={`form-input ${leftIcon ? 'form-input--has-left-icon' : ''} ${
+              rightIcon ? 'form-input--has-right-icon' : ''
             }`}
-            {...props}
+            aria-invalid={Boolean(error)}
+            aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined}
+            {...restProps}
           />
-          {rightIcon && <span className="form-field__icon form-field__icon--right">{rightIcon}</span>}
+
+          {rightIcon && <span className="input-icon input-icon--right">{rightIcon}</span>}
         </div>
+
         {error && (
-          <p id={errorId} className="form-field__error-msg" role="alert">
+          <span id={`${inputId}-error`} className="form-error-text" role="alert">
             {error}
-          </p>
+          </span>
         )}
+
         {!error && helperText && (
-          <p id={helperId} className="form-field__helper-text">
+          <span id={`${inputId}-helper`} className="form-helper-text">
             {helperText}
-          </p>
+          </span>
         )}
       </div>
     );

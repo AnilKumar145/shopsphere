@@ -5,24 +5,34 @@
  * ----------------------------------------------------------------------------
  * 🎯 Objective: Construct a bespoke luxury styling consultation booking modal
  *    capturing appointment date, time, and styling preferences.
- * 📁 Reference: shopsphere-solution/src/features/concierge/ConciergeModal.tsx
+ * 📖 Reference Spec: change-requests/CR-17A/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/features/concierge/ConciergeModal.tsx
  * ============================================================================
  */
 
 import React, { useState } from 'react';
+import { X, Sparkles } from 'lucide-react';
+import { Button } from '../../components/ui/Button';
+import './ConciergeModal.css';
 
 export interface ConciergeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  productTitle: string;
+  productTitle?: string;
 }
 
+/**
+ * 📝 STEP 1: Controlled Form Input State (name, email, preferredDate, notes)
+ * 📝 STEP 2: Field Validation Rules
+ * 📝 STEP 3: Submission Handler & Toast Feedback
+ */
 export const ConciergeModal: React.FC<ConciergeModalProps> = ({ isOpen, onClose, productTitle }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
-  const [time, setTime] = useState('14:00');
-  const [notes, setNotes] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -31,37 +41,45 @@ export const ConciergeModal: React.FC<ConciergeModalProps> = ({ isOpen, onClose,
   };
 
   return (
-    <div className="modal-overlay" style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100 }}>
-      <div className="modal-content" style={{ background: 'var(--surface-card, #fff)', color: 'var(--text-primary, #000)', padding: '2rem', borderRadius: '8px', maxWidth: '500px', width: '90%' }}>
-        <h2 style={{ fontFamily: 'var(--font-heading)', marginTop: 0 }}>VIP Concierge Consultation</h2>
-        <p style={{ color: 'var(--text-muted, #71717a)' }}>Book a bespoke private appointment for <strong>{productTitle}</strong>.</p>
+    <div className="concierge-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="concierge-title">
+      <div className="concierge-content" onClick={(e) => e.stopPropagation()}>
+        <button type="button" className="concierge-close" onClick={onClose} aria-label="Close concierge dialog">
+          <X size={20} />
+        </button>
+
+        <div className="concierge-header">
+          <Sparkles className="concierge-icon" size={24} />
+          <h2 id="concierge-title">VIP Concierge Consultation</h2>
+          <p>Book a personalized styling appointment with a ShopSphere Atelier Advisor.</p>
+          {productTitle && <p className="concierge-product-context">Inquiring about: <strong>{productTitle}</strong></p>}
+        </div>
 
         {submitted ? (
-          <div>
-            <p style={{ color: 'var(--color-success, #22c55e)', fontWeight: 600 }}>Thank you. An Atelier concierge consultant will reach out to confirm your booking.</p>
-            <button className="btn btn-primary" onClick={onClose} style={{ marginTop: '1rem' }}>Close</button>
+          <div className="concierge-success">
+            <h3>Appointment Request Received</h3>
+            <p>Our concierge team will reach out to <strong>{email}</strong> within 2 hours to confirm your consultation.</p>
+            <Button variant="primary" onClick={onClose} style={{ marginTop: '1.5rem' }}>Close</Button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div>
-              <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.4rem' }}>Preferred Date</label>
-              <input type="date" required value={date} onChange={e => setDate(e.target.value)} style={{ width: '100%', padding: '0.6rem' }} />
+          <form onSubmit={handleSubmit} className="concierge-form">
+            <div className="form-group">
+              <label htmlFor="concierge-name">Full Name</label>
+              <input id="concierge-name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Lady Eleanor Vance" />
             </div>
-            <div>
-              <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.4rem' }}>Time</label>
-              <select value={time} onChange={e => setTime(e.target.value)} style={{ width: '100%', padding: '0.6rem' }}>
-                <option value="11:00">11:00 AM (Morning Session)</option>
-                <option value="14:00">2:00 PM (Afternoon Session)</option>
-                <option value="17:00">5:00 PM (Evening Salon)</option>
-              </select>
+
+            <div className="form-group">
+              <label htmlFor="concierge-email">Email Address</label>
+              <input id="concierge-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="eleanor@atelier.com" />
             </div>
-            <div>
-              <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.4rem' }}>Styling Preferences</label>
-              <textarea rows={3} value={notes} onChange={e => setNotes(e.target.value)} placeholder="Share sizing or collection preferences..." style={{ width: '100%', padding: '0.6rem' }} />
+
+            <div className="form-group">
+              <label htmlFor="concierge-date">Preferred Date</label>
+              <input id="concierge-date" type="date" required value={date} onChange={(e) => setDate(e.target.value)} />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1rem' }}>
-              <button type="button" className="btn btn-secondary" onClick={onClose}>Cancel</button>
-              <button type="submit" className="btn btn-primary">Book Consultation</button>
+
+            <div className="concierge-actions">
+              <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
+              <Button type="submit" variant="primary">Schedule Consultation</Button>
             </div>
           </form>
         )}
