@@ -1,8 +1,14 @@
 /**
- * Account Profile & User Preferences Route
- * Demonstrates 10.6 Redux Toolkit, 11.3 Authentication State, 11.6 Role-Based Access
+ * ============================================================================
+ * 🎓 TRAINEE EXERCISE: CR-11A — Customer Account Profile & Security Settings
+ * Module 11: Security & Session Management (Units 11.3, 11.6, 11.7)
+ * ----------------------------------------------------------------------------
+ * 🎯 Objective: Construct user account management with profile updates,
+ *    XSS-sanitized inputs, and role badge indicators.
+ * 📖 Reference Spec: change-requests/CR-11A/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/pages/AccountPage.tsx
+ * ============================================================================
  */
-
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {

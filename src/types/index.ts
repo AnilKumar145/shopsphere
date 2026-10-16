@@ -1,8 +1,14 @@
 /**
- * ShopSphere Core Domain & API Types
- * Demonstrating Modules 2, 9, 11, 15
+ * ============================================================================
+ * 🎓 TRAINEE EXERCISE: CR-09C — Global Domain Models & DTO Interfaces
+ * Module 9: REST API Integration with TypeScript (Units 9.1, 9.2, 9.4)
+ * ----------------------------------------------------------------------------
+ * 🎯 Objective: Model core e-commerce domain types (Product, Category, CartItem,
+ *    Order, User, ShippingAddress) with strict type safety.
+ * 📖 Reference Spec: change-requests/CR-09C/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/types/index.ts
+ * ============================================================================
  */
-
 // 2.6 Enums & Discriminated Unions
 export enum SortOption {
   FEATURED = 'featured',
@@ -35,6 +41,15 @@ export interface Rating {
   readonly count: number;
 }
 
+/**
+ * 📝 STEP 1: Product Domain Model
+ * ----------------------------------------------------------------------------
+ * 🛠️ WHAT TO DO:
+ *    Define Product contract matching Fake Store API schema with strict types:
+ *    id (number), title (string), price (number), description (string),
+ *    category (string), image (string), rating ({ rate: number, count: number }).
+ */
+// TODO: [STUDENT IMPLEMENTATION REQUIRED]
 export interface Product {
   readonly id: number;
   readonly title: string;
@@ -52,6 +67,13 @@ export type CategoryCountMap = Record<string, number>;
 export type OptionalProductUpdates = Partial<Product>;
 
 // Cart & Wishlist Models
+/**
+ * 📝 STEP 2: Cart Item DTO Contract
+ * ----------------------------------------------------------------------------
+ * 🛠️ WHAT TO DO:
+ *    Model cart line items containing product model and quantity integer.
+ */
+// TODO: [STUDENT IMPLEMENTATION REQUIRED]
 export interface CartItem {
   readonly product: Product;
   quantity: number;
@@ -128,6 +150,13 @@ export interface OrderItem {
   readonly quantity: number;
 }
 
+/**
+ * 📝 STEP 3: Order History DTO Contract
+ * ----------------------------------------------------------------------------
+ * 🛠️ WHAT TO DO:
+ *    Model customer order with id, items, totals, status, and shipping details.
+ */
+// TODO: [STUDENT IMPLEMENTATION REQUIRED]
 export interface Order {
   readonly id: string;
   readonly orderNumber: string;

@@ -143,7 +143,18 @@ export const CheckoutPage: React.FC = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const validatePayment = (): boolean => {
+    /**
+   * 📝 STEP 1: Implement Payment Method & Card Number Validation
+   * ----------------------------------------------------------------------------
+   * 🛠️ WHAT TO DO:
+   *    Validate payment fields:
+   *    1. Require non-empty cardholderName.
+   *    2. Verify cardNumber has at least 16 digits and meets basic checksum rules.
+   *    3. Verify expiration date format (MM/YY).
+   *    4. Verify CVV is 3 or 4 digits.
+   */
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+const validatePayment = (): boolean => {
     if (paymentMethod === PaymentMethod.DEMO_INVOICE) return true;
     const errors: Record<string, string> = {};
     if (!cardholderName.trim()) errors.cardholderName = 'Cardholder name is required';

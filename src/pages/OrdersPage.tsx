@@ -35,7 +35,18 @@ export const OrdersPage: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>(() => orderService.getOrders());
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
-  const handleCancelOrder = (orderId: string) => {
+    /**
+   * 📝 STEP 1: Implement Order Cancellation State Transition
+   * ----------------------------------------------------------------------------
+   * 🛠️ WHAT TO DO:
+   *    Cancel an order:
+   *    1. Prompt user confirmation with window.confirm().
+   *    2. Call orderService.updateOrderStatus(orderId, 'cancelled').
+   *    3. Refresh orders list state.
+   *    4. Dispatch toast notification confirming cancellation.
+   */
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+const handleCancelOrder = (orderId: string) => {
     orderService.updateOrderStatus(orderId, OrderStatus.CANCELLED);
     dispatch(addToast({
       type: 'info',
@@ -165,6 +176,8 @@ export const OrdersPage: React.FC = () => {
           <div className="order-modal-body">
             <div className="order-modal__status-row">
             {/* Delivery Milestone Progress Timeline (CR-17B) */}
+                        {/* 📝 STEP 2: Mount Delivery Milestone Timeline (CR-17B) */}
+            {/* TODO: [STUDENT IMPLEMENTATION REQUIRED] */}
             <OrderTimeline
               currentMilestone={selectedOrder.status === OrderStatus.CANCELLED ? 'Confirmed' : 'In Transit'}
               orderTimestamp={selectedOrder.createdAt}

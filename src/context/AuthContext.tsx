@@ -1,10 +1,14 @@
 /**
- * Authentication & Session Context
- * Demonstrates Module 11: 11.1, 11.2, 11.3, 11.4, 11.6, 11.7
- * Note: Fake Store API provides a static demonstration auth endpoint.
- * This context safely persists demo tokens and hydrates the user profile.
+ * ============================================================================
+ * 🎓 TRAINEE EXERCISE: CR-11B — Authentication & Session Context Provider
+ * Module 11: Authentication & Authorization (Units 11.1, 11.2, 11.3, 11.4, 11.6)
+ * ----------------------------------------------------------------------------
+ * 🎯 Objective: Manage user authentication state, persist JWT tokens safely,
+ *    and enforce secure session cleanup on logout.
+ * 📖 Reference Spec: change-requests/CR-11B/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/context/AuthContext.tsx
+ * ============================================================================
  */
-
 import React, { createContext, useContext, useState, useEffect, useMemo, ReactNode } from 'react';
 import { AuthSession, User } from '../types';
 import { apiService, LoginCredentials } from '../services/api';
@@ -64,7 +68,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   }, [session]);
 
-  const login = async (credentials: LoginCredentials): Promise<boolean> => {
+    /**
+   * 📝 STEP 1: Implement Login Handler with Token Persistence
+   * ----------------------------------------------------------------------------
+   * 🛠️ WHAT TO DO:
+   *    1. Authenticate credentials via apiService.login().
+   *    2. Persist session token securely in localStorage.
+   *    3. Update user profile state.
+   */
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+const login = async (credentials: LoginCredentials): Promise<boolean> => {
     setIsLoading(true);
     setError(null);
 
@@ -117,7 +130,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setIsLoading(false);
   };
 
-  const logout = () => {
+    /**
+   * 📝 STEP 2: Implement Logout Handler with Secure Storage Clearance
+   * ----------------------------------------------------------------------------
+   * 🛠️ WHAT TO DO:
+   *    1. Reset in-memory session and user state to null.
+   *    2. Clear sensitive tokens from browser storage using clearSecureSession().
+   */
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+const logout = () => {
     setSession(null);
     removeStorageItem(STORAGE_KEYS.AUTH);
   };

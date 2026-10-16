@@ -1,8 +1,14 @@
 /**
- * Product Card Component
- * Demonstrates 3.5 Reusable Components, 4.4 Styling, 13.2 Component Memoization (React.memo)
+ * ============================================================================
+ * 🎓 TRAINEE EXERCISE: CR-03A — Luxury Product Card Presentation & Actions
+ * Module 3: React Components with TypeScript (Units 3.1, 3.2, 3.3, 3.5)
+ * ----------------------------------------------------------------------------
+ * 🎯 Objective: Render an editorial product card displaying imagery, price,
+ *    reviews, and handling add-to-bag / quick-view action callbacks.
+ * 📖 Reference Spec: change-requests/CR-03A/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/features/catalog/components/ProductCard.tsx
+ * ============================================================================
  */
-
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, ShoppingBag, Star, Edit, Eye } from 'lucide-react';
@@ -15,6 +21,14 @@ import { useAppDispatch } from '../../../store';
 import { addToast } from '../../../store/slices/preferencesSlice';
 import './ProductCard.css';
 
+/**
+ * 📝 STEP 1: Component Props Contract
+ * ----------------------------------------------------------------------------
+ * 🛠️ WHAT TO DO:
+ *    Define ProductCardProps taking the Product model, an optional onQuickView
+ *    callback, and optional custom actions.
+ */
+// TODO: [STUDENT IMPLEMENTATION REQUIRED]
 export interface ProductCardProps {
   product: Product;
   onQuickView?: (product: Product) => void;

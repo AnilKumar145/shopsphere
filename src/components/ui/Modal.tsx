@@ -1,18 +1,13 @@
 /**
  * ============================================================================
- * 🎓 TRAINEE EXERCISE: CR-12B — Compound Dialog Pattern
- * Module 12: Advanced Component Patterns (Units 12.1, 12.3)
+ * 🎓 TRAINEE EXERCISE: CR-12B — Accessible Modal Dialog Component using Portals
+ * Module 12: Advanced Component Design Patterns (Units 12.1, 12.7)
  * ----------------------------------------------------------------------------
- * 🎯 Objective: Construct compound dialog components (<Modal.Header>,
- *    <Modal.Body>, <Modal.Footer>) sharing state via context.
- * 📁 Reference: shopsphere-solution/src/components/ui/Modal.tsx
+ * 🎯 Objective: Render dialog overlays via ReactDOM.createPortal directly into
+ *    document.body with keyboard Escape dismissal, trapped focus, and ARIA roles.
+ * 📖 Reference Spec: change-requests/CR-12B/request.md
+ * 🌟 Golden Solution: shopsphere-solution/src/components/ui/Modal.tsx
  * ============================================================================
- */
-
-/**
- * Accessible Modal Dialog using React Portals
- * Demonstrates 12.7 Portals: createPortal, Modal Dialogs, Overlay Components
- * Demonstrates 7.3 useRef & 6.1 Keyboard Event Handling (Escape key listener)
  */
 
 import React, { useEffect, useRef, ReactNode } from 'react';
@@ -30,6 +25,23 @@ export interface ModalProps {
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
+/**
+ * 📝 STEP 1: Keyboard Escape Key Listener
+ * ----------------------------------------------------------------------------
+ * 🛠️ WHAT TO DO:
+ *    When isOpen is true, register a window 'keydown' event listener that calls
+ *    onClose() when e.key === 'Escape'. Clean up listener on unmount/close.
+ *
+ * 📝 STEP 2: Body Scroll Lock
+ * ----------------------------------------------------------------------------
+ * 🛠️ WHAT TO DO:
+ *    Set document.body.style.overflow = 'hidden' when open, reset on cleanup.
+ *
+ * 📝 STEP 3: Portal Rendering into Document Body
+ * ----------------------------------------------------------------------------
+ * 🛠️ WHAT TO DO:
+ *    Use createPortal to mount the overlay div into document.body.
+ */
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
@@ -38,65 +50,68 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   footer,
   maxWidth = 'md',
-}): React.JSX.Element | null => {
-  const dialogRef = useRef<HTMLDivElement>(null);
+}) => {
+  const modalRef = useRef<HTMLDivElement>(null);
 
-  // Close on Escape key press (6.1 & 15.8 Accessibility)
   useEffect(() => {
+    // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+    // Implement Escape key dismissal and body scroll lock described in STEPS 1-2.
+    if (!isOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         onClose();
       }
     };
 
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    }
+    window.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
     };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
+  // TODO: [STUDENT IMPLEMENTATION REQUIRED]
+  // Render accessible modal portal dialog:
   return createPortal(
-    <div className="ui-modal-overlay" onClick={onClose} aria-hidden="true">
+    <div className="modal-backdrop" onClick={onClose} role="presentation">
       <div
-        ref={dialogRef}
+        ref={modalRef}
+        className={`modal-dialog modal-dialog--${maxWidth}`}
+        onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
         aria-describedby={description ? 'modal-description' : undefined}
-        className={`ui-modal-content ui-modal-content--${maxWidth}`}
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking modal body
       >
-        <div className="ui-modal-header">
+        <div className="modal-header">
           <div>
-            <h2 id="modal-title" className="ui-modal-title">
+            <h2 id="modal-title" className="modal-title">
               {title}
             </h2>
             {description && (
-              <p id="modal-description" className="ui-modal-desc">
+              <p id="modal-description" className="modal-description">
                 {description}
               </p>
             )}
           </div>
           <button
             type="button"
-            className="ui-modal-close"
+            className="modal-close-btn"
             onClick={onClose}
-            aria-label="Close modal dialog"
+            aria-label="Close dialog"
           >
             <X size={20} />
           </button>
         </div>
 
-        <div className="ui-modal-body">{children}</div>
+        <div className="modal-body">{children}</div>
 
-        {footer && <div className="ui-modal-footer">{footer}</div>}
+        {footer && <div className="modal-footer">{footer}</div>}
       </div>
     </div>,
     document.body
