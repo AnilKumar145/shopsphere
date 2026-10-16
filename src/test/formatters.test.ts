@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { formatCurrency, formatDate, truncateText, formatCategoryName } from '../utils/formatters';
+import { convertCurrency, getCurrencySymbol, SUPPORTED_CURRENCIES } from '../utils/currencyUtils';
 
-describe('formatters utility (Unit 2.2, 14.1, 14.8)', () => {
+describe('formatters utility (CR-02A)', () => {
   it('formats currency correctly for USD', () => {
     expect(formatCurrency(109.95)).toBe('$109.95');
     expect(formatCurrency(0)).toBe('$0.00');
@@ -32,5 +33,28 @@ describe('formatters utility (Unit 2.2, 14.1, 14.8)', () => {
     const formatted = formatDate(dateStr);
     expect(formatted).not.toBe('N/A');
     expect(formatDate('invalid-date-string')).toBe('N/A');
+  });
+});
+
+describe('currencyUtils (CR-02A Student Exercise)', () => {
+  it('has all 4 supported currencies in SUPPORTED_CURRENCIES', () => {
+    const codes = SUPPORTED_CURRENCIES.map(c => c.code);
+    expect(codes).toContain('USD');
+    expect(codes).toContain('EUR');
+    expect(codes).toContain('GBP');
+    expect(codes).toContain('JPY');
+  });
+
+  it('converts currencies correctly using exchange rates', () => {
+    expect(convertCurrency(100, 'USD', 'EUR')).toBe(92);
+    expect(convertCurrency(100, 'USD', 'GBP')).toBe(79);
+    expect(convertCurrency(100, 'USD', 'USD')).toBe(100);
+  });
+
+  it('retrieves currency symbols accurately', () => {
+    expect(getCurrencySymbol('USD')).toBe('$');
+    expect(getCurrencySymbol('EUR')).toBe('€');
+    expect(getCurrencySymbol('GBP')).toBe('£');
+    expect(getCurrencySymbol('JPY')).toBe('¥');
   });
 });

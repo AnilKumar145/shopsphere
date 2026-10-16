@@ -28,8 +28,9 @@
  * 💡 IMPLEMENTATION HINT:
  *    Use TypeScript union type syntax (`|`). Do NOT use enum or `any`.
  */
-// TODO: [STUDENT IMPLEMENTATION REQUIRED] Declare the CurrencyCode union type:
-export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'JPY';
+// TODO: [STUDENT IMPLEMENTATION REQUIRED]
+// Replace 'string' with the strict union: 'USD' | 'EUR' | 'GBP' | 'JPY'
+export type CurrencyCode = 'USD' | string;
 
 /**
  * 📝 STEP 2: Define CurrencyConfig Interface Contract
@@ -44,12 +45,13 @@ export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'JPY';
  * 💡 IMPLEMENTATION HINT:
  *    Mark properties with `readonly` to enforce immutability.
  */
-// TODO: [STUDENT IMPLEMENTATION REQUIRED] Define the CurrencyConfig interface:
+// TODO: [STUDENT IMPLEMENTATION REQUIRED]
+// Complete the interface by declaring the readonly properties specified in STEP 2 above:
 export interface CurrencyConfig {
   readonly code: CurrencyCode;
-  readonly symbol: string;
-  readonly label: string;
-  readonly exchangeRateToUSD: number;
+  readonly symbol?: string;
+  readonly label?: string;
+  readonly exchangeRateToUSD?: number;
 }
 
 /**
@@ -62,5 +64,6 @@ export interface CurrencyConfig {
  * 💡 IMPLEMENTATION HINT:
  *    Record<CurrencyCode, number>
  */
-// TODO: [STUDENT IMPLEMENTATION REQUIRED] Define the ExchangeRateMap generic record:
-export type ExchangeRateMap = Record<CurrencyCode, number>;
+// TODO: [STUDENT IMPLEMENTATION REQUIRED]
+// Define ExchangeRateMap using Record<CurrencyCode, number>:
+export type ExchangeRateMap = Record<string, number>;
